@@ -92,7 +92,6 @@ function siguienteAccion() {
     document.getElementById("btn-siguiente-accion").style.display = "none";
     document.getElementById("btn-siguiente").style.display = "inline-block";
   }
-}
 
 function siguienteJugador() {
   document.getElementById("carta").src = `${estaciones[estacionIndex]}/14.png`; // mostrar reverso
