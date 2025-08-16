@@ -38,8 +38,8 @@ function iniciarEstacion() {
   mazo = cargarMazo(estacion);
   mazoBarajado = barajar(mazo);
 
-  document.getElementById("btn-robar").style.display = "none";
-  document.getElementById("btn-voltear").style.display = "inline-block";
+  document.getElementById("btn-robar").style.display = "inline-block";
+  document.getElementById("btn-voltear").style.display = "none";
   document.getElementById("btn-siguiente").style.display = "none";
   document.getElementById("btn-reiniciar").style.display = "none";
 
