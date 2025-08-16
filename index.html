@@ -7,10 +7,18 @@
 </head>
 <body>
   <h1>Mazo de Cartas</h1>
-  <button onclick="sacarCarta()">Sacar carta</button>
+  
   <div id="carta-container">
     <img id="carta" src="img/back.png" alt="Carta" style="display:none;">
   </div>
+  
+  <div id="botones">
+    <button onclick="voltearCarta()">Voltear</button>
+    <button onclick="siguienteCarta()">Siguiente</button>
+  </div>
+
+  <p id="mensaje"></p>
+
   <script src="script.js"></script>
 </body>
 </html>
