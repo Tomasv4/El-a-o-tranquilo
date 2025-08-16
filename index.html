@@ -2,23 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mazo de Cartas - Invierno</title>
+  <title>El año tranquilo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Mazo de Cartas - Invierno</h1>
-  
-  <div id="carta-container">
-    <img id="carta" src="" alt="Carta" style="display:none;">
-  </div>
-  
-  <div id="botones">
-    <button id="btn-robar" onclick="robarCarta()">Roba una carta</button>
-    <button id="btn-voltear" onclick="voltearCarta()" style="display:none;">Voltear</button>
-    <button id="btn-siguiente" onclick="siguienteJugador()" style="display:none;">Siguiente jugador</button>
-  </div>
+  <div id="game-container">
+    <h1 id="titulo-principal">El año tranquilo</h1>
+    <h2 id="titulo-estacion" style="display:none;"></h2>
 
-  <p id="mensaje"></p>
+    <div id="carta-container">
+      <img id="carta" src="" alt="Carta" style="display:none;">
+    </div>
+
+    <div id="botones">
+      <button id="btn-iniciar" onclick="iniciarJuego()">Empezar juego</button>
+      <button id="btn-robar" onclick="robarCarta()" style="display:none;">Roba una carta</button>
+      <button id="btn-voltear" onclick="voltearCarta()" style="display:none;">Voltear</button>
+      <button id="btn-siguiente" onclick="siguienteJugador()" style="display:none;">Siguiente jugador</button>
+      <button id="btn-reiniciar" onclick="reiniciarJuego()" style="display:none;">Volver a iniciar</button>
+    </div>
+
+    <p id="mensaje"></p>
+  </div>
 
   <script src="script.js"></script>
 </body>
