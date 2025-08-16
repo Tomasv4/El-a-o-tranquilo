@@ -76,18 +76,18 @@ function voltearCarta() {
     cartaRevelada = true;
 
       // Lógica especial para la carta que descarta 2 cartas (Verano/13.png)
-    if (estaciones[estacionIndex] === "Verano" && cartaActual.includes("13.png")) {
+  //  if (estaciones[estacionIndex] === "Verano" && cartaActual.includes("13.png")) {
         // Avanzar dos semanas extra
-        semana = Math.min(semana + 2, 26);
+     //   semana = Math.min(semana + 2, 26);
         // Sacar hasta 2 cartas extra si quedan
       //  for (let i = 0; i < 2; i++) {
         //    if (mazoBarajado.length > 0) {
           //      mazoBarajado.pop();
             //} else {
               //  break;
-            }
-        }
-  }
+         //   }
+    //    }
+ // }
 
     // Verificar si es la carta final del invierno
     if (estaciones[estacionIndex] === "Invierno" && (cartaActual.includes("13.png") || mazoBarajado.length === 0)) {
