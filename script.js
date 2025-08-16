@@ -82,6 +82,14 @@ function voltearCarta() {
     }
 
     document.getElementById("btn-voltear").style.display = "none";
+    document.getElementById("btn-siguiente-accion").style.display = "inline-block";
+  }
+}
+
+function siguienteAccion() {
+    document.getElementById("carta").src = `${estaciones[estacionIndex]}/15.png`; // mostrar acciones
+
+    document.getElementById("btn-siguiente-accion").style.display = "none";
     document.getElementById("btn-siguiente").style.display = "inline-block";
   }
 }
