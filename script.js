@@ -76,7 +76,7 @@ function voltearCarta() {
     cartaRevelada = true;
 
       // Lógica especial para la carta que descarta 2 cartas (Verano/13.png)
-    if (estaciones[estacionIndex] === "Verano" && (cartaActual.includes("13.png")) {
+    if (estaciones[estacionIndex] === "Verano" && cartaActual.includes("13.png")) {
         // Avanzar dos semanas extra
         semana = Math.min(semana + 2, 26);
         // Sacar hasta 2 cartas extra si quedan
