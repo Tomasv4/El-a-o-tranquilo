@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #2d2d2d;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#carta-container {
+  margin-top: 20px;
+}
+
+#carta {
+  width: 300px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+}
