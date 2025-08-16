@@ -78,6 +78,7 @@ semana++;
                 break;
             }
         }
+      }
 
   document.getElementById("btn-robar").style.display = "none";
   document.getElementById("btn-voltear").style.display = "inline-block";
