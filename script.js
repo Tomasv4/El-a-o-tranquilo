@@ -65,23 +65,6 @@ semana++;
   const estacion = estaciones[estacionIndex];
   document.getElementById("carta").src = `${estacion}/14.png`; // mostrar reverso
 
-  // Lógica especial para la carta que descarta 2 cartas (Verano/13.png)
-    if (cartaActual === "Verano/13.png") {
-        // Avanzar dos semanas extra
-        semana += 2;
-
-        // Sacar hasta 2 cartas extra si quedan
-        for (let i = 0; i < 2; i++) {
-            if (mazoBarajado.length > 0) {
-                mazoBarajado.pop();
-            } else {
-                break;
-            }
-        }
-  } else {
-        document.getElementById("mensaje").textContent = "";
-    }
-
   document.getElementById("btn-robar").style.display = "none";
   document.getElementById("btn-voltear").style.display = "inline-block";
   document.getElementById("btn-siguiente").style.display = "none";
@@ -97,6 +80,24 @@ function voltearCarta() {
       terminarJuego();
       return;
     }
+
+      // Lógica especial para la carta que descarta 2 cartas (Verano/13.png)
+    if (estaciones[estacionIndex] === "Verano" && (cartaActual.includes("13.png")) {
+        // Avanzar dos semanas extra
+       if (semana + 2 >= 26) {
+         semana = 26;
+         } else {
+          semana += 2;
+         }
+        // Sacar hasta 2 cartas extra si quedan
+        for (let i = 0; i < 2; i++) {
+            if (mazoBarajado.length > 0) {
+                mazoBarajado.pop();
+            } else {
+                break;
+            }
+        }
+  }
 
     document.getElementById("btn-voltear").style.display = "none";
     document.getElementById("btn-siguiente-accion").style.display = "inline-block";
