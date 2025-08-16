@@ -80,11 +80,11 @@ function voltearCarta() {
         // Avanzar dos semanas extra
         semana = Math.min(semana + 2, 26);
         // Sacar hasta 2 cartas extra si quedan
-        for (let i = 0; i < 2; i++) {
-            if (mazoBarajado.length > 0) {
-                mazoBarajado.pop();
-            } else {
-                break;
+      //  for (let i = 0; i < 2; i++) {
+        //    if (mazoBarajado.length > 0) {
+          //      mazoBarajado.pop();
+            //} else {
+              //  break;
             }
         }
   }
