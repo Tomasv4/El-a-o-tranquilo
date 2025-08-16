@@ -1,66 +1,113 @@
+const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"];
+let estacionIndex = 0;
 let mazo = [];
-for (let i = 1; i <= 13; i++) {
-  mazo.push(`Invierno/${i}.png`);
-}
-
-let reverso = "Invierno/14.png";
 let mazoBarajado = [];
 let cartaActual = null;
 let cartaRevelada = false;
+let juegoTerminado = false;
 
-// Barajar mazo
-function barajar() {
-  mazoBarajado = mazo
+// Generar mazo de la estación actual
+function cargarMazo(estacion) {
+  let nuevoMazo = [];
+  for (let i = 1; i <= 13; i++) {
+    nuevoMazo.push(`${estacion}/${i}.png`);
+  }
+  return nuevoMazo;
+}
+
+function barajar(mazo) {
+  return mazo
     .map(valor => ({ valor, orden: Math.random() }))
     .sort((a, b) => a.orden - b.orden)
     .map(({ valor }) => valor);
 }
 
-// Robar una carta (aparece boca abajo)
-function robarCarta() {
-  document.getElementById("mensaje").textContent = "";
+function iniciarJuego() {
+  estacionIndex = 0;
+  juegoTerminado = false;
+  iniciarEstacion();
+  document.getElementById("btn-iniciar").style.display = "none";
+}
 
+function iniciarEstacion() {
+  const estacion = estaciones[estacionIndex];
+  document.getElementById("titulo-estacion").textContent = estacion;
+  document.getElementById("titulo-estacion").style.display = "block";
+
+  mazo = cargarMazo(estacion);
+  mazoBarajado = barajar(mazo);
+
+  document.getElementById("btn-robar").style.display = "inline-block";
+  document.getElementById("btn-voltear").style.display = "none";
+  document.getElementById("btn-siguiente").style.display = "none";
+  document.getElementById("btn-reiniciar").style.display = "none";
+
+  document.getElementById("carta").src = `${estacion}/14.png`; // reverso siempre visible
+  document.getElementById("carta").style.display = "block";
+
+  document.getElementById("mensaje").textContent = "";
+}
+
+function robarCarta() {
   if (mazoBarajado.length === 0) {
-    document.getElementById("mensaje").textContent = "🎉 No quedan más cartas.";
-    document.getElementById("carta").style.display = "none";
-    document.getElementById("btn-robar").style.display = "none";
-    document.getElementById("btn-voltear").style.display = "none";
-    document.getElementById("btn-siguiente").style.display = "none";
+    siguienteEstacion();
     return;
   }
 
-  cartaActual = mazoBarajado.pop(); // toma la siguiente carta
+  cartaActual = mazoBarajado.pop();
   cartaRevelada = false;
 
-  // Mostrar reverso
-  document.getElementById("carta").src = reverso;
-  document.getElementById("carta").style.display = "block";
+  const estacion = estaciones[estacionIndex];
+  document.getElementById("carta").src = `${estacion}/14.png`; // mostrar reverso
 
-  // Botones visibles
   document.getElementById("btn-robar").style.display = "none";
   document.getElementById("btn-voltear").style.display = "inline-block";
   document.getElementById("btn-siguiente").style.display = "none";
 }
 
-// Voltear carta
 function voltearCarta() {
   if (cartaActual && !cartaRevelada) {
     document.getElementById("carta").src = cartaActual;
     cartaRevelada = true;
 
-    // Cambiar botones
+    // Verificar si es la carta final del invierno
+    if (estaciones[estacionIndex] === "Invierno" && (cartaActual.includes("13.png") || mazoBarajado.length === 0)) {
+      terminarJuego();
+      return;
+    }
+
     document.getElementById("btn-voltear").style.display = "none";
     document.getElementById("btn-siguiente").style.display = "inline-block";
   }
 }
 
-// Siguiente jugador
 function siguienteJugador() {
-  document.getElementById("carta").style.display = "none";
+  document.getElementById("carta").src = `${estaciones[estacionIndex]}/14.png`; // mostrar reverso
   document.getElementById("btn-siguiente").style.display = "none";
   document.getElementById("btn-voltear").style.display = "none";
   document.getElementById("btn-robar").style.display = "inline-block";
 }
 
-// Inicializar
-barajar();
+function siguienteEstacion() {
+  estacionIndex++;
+  if (estacionIndex < estaciones.length) {
+    iniciarEstacion();
+  } else {
+    terminarJuego();
+  }
+}
+
+function terminarJuego() {
+  juegoTerminado = true;
+  document.getElementById("mensaje").textContent = "🌟 El año tranquilo ha terminado 🌟";
+  document.getElementById("btn-robar").style.display = "none";
+  document.getElementById("btn-voltear").style.display = "none";
+  document.getElementById("btn-siguiente").style.display = "none";
+  document.getElementById("btn-reiniciar").style.display = "inline-block";
+}
+
+function reiniciarJuego() {
+  estacionIndex = 0;
+  iniciarEstacion();
+  document.getElementById("mensaje").textContent = "";
+}
