@@ -28,7 +28,7 @@ function barajar() {
 
 // Mostrar reverso
 function mostrarReverso() {
-  document.getElementById("carta").src = "img/back.png";
+  document.getElementById("carta").src = "Invierno/14.png";
   document.getElementById("carta").style.display = "block";
   cartaRevelada = false;
 }
