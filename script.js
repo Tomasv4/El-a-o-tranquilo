@@ -1,17 +1,17 @@
 let mazo = [
-  "img/carta1.png",
-  "img/carta2.png",
-  "img/carta3.png",
-  "img/carta4.png",
-  "img/carta5.png",
-  "img/carta6.png",
-  "img/carta7.png",
-  "img/carta8.png",
-  "img/carta9.png",
-  "img/carta10.png",
-  "img/carta11.png",
-  "img/carta12.png",
-  "img/carta13.png"
+  "Invierno/1.png",
+  "Invierno/2.png",
+  "Invierno/3.png",
+  "Invierno/4.png",
+  "Invierno/5.png",
+  "Invierno/6.png",
+  "Invierno/7.png",
+  "Invierno/8.png",
+  "Invierno/9.png",
+  "Invierno/10.png",
+  "Invierno/11.png",
+  "Invierno/12.png",
+  "Invierno/13.png"
 ];
 
 let mazoBarajado = [];
