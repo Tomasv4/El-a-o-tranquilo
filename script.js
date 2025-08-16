@@ -1,19 +1,9 @@
-let mazo = [
-  "Invierno/1.png",
-  "Invierno/2.png",
-  "Invierno/3.png",
-  "Invierno/4.png",
-  "Invierno/5.png",
-  "Invierno/6.png",
-  "Invierno/7.png",
-  "Invierno/8.png",
-  "Invierno/9.png",
-  "Invierno/10.png",
-  "Invierno/11.png",
-  "Invierno/12.png",
-  "Invierno/13.png"
-];
+let mazo = [];
+for (let i = 1; i <= 13; i++) {
+  mazo.push(`Invierno/${i}.png`);
+}
 
+let reverso = "Invierno/14.png";
 let mazoBarajado = [];
 let cartaActual = null;
 let cartaRevelada = false;
@@ -26,40 +16,51 @@ function barajar() {
     .map(({ valor }) => valor);
 }
 
-// Mostrar reverso
-function mostrarReverso() {
-  document.getElementById("carta").src = "Invierno/14.png";
-  document.getElementById("carta").style.display = "block";
-  cartaRevelada = false;
-}
-
-// Siguiente carta
-function siguienteCarta() {
+// Robar una carta (aparece boca abajo)
+function robarCarta() {
   document.getElementById("mensaje").textContent = "";
 
   if (mazoBarajado.length === 0) {
     document.getElementById("mensaje").textContent = "🎉 No quedan más cartas.";
     document.getElementById("carta").style.display = "none";
+    document.getElementById("btn-robar").style.display = "none";
+    document.getElementById("btn-voltear").style.display = "none";
+    document.getElementById("btn-siguiente").style.display = "none";
     return;
   }
 
-  cartaActual = mazoBarajado.pop(); // toma la siguiente
-  mostrarReverso();
+  cartaActual = mazoBarajado.pop(); // toma la siguiente carta
+  cartaRevelada = false;
+
+  // Mostrar reverso
+  document.getElementById("carta").src = reverso;
+  document.getElementById("carta").style.display = "block";
+
+  // Botones visibles
+  document.getElementById("btn-robar").style.display = "none";
+  document.getElementById("btn-voltear").style.display = "inline-block";
+  document.getElementById("btn-siguiente").style.display = "none";
 }
 
 // Voltear carta
 function voltearCarta() {
-  if (!cartaActual) {
-    document.getElementById("mensaje").textContent = "Primero saca una carta con 'Siguiente'.";
-    return;
-  }
-
-  if (!cartaRevelada) {
+  if (cartaActual && !cartaRevelada) {
     document.getElementById("carta").src = cartaActual;
     cartaRevelada = true;
+
+    // Cambiar botones
+    document.getElementById("btn-voltear").style.display = "none";
+    document.getElementById("btn-siguiente").style.display = "inline-block";
   }
+}
+
+// Siguiente jugador
+function siguienteJugador() {
+  document.getElementById("carta").style.display = "none";
+  document.getElementById("btn-siguiente").style.display = "none";
+  document.getElementById("btn-voltear").style.display = "none";
+  document.getElementById("btn-robar").style.display = "inline-block";
 }
 
 // Inicializar
 barajar();
-siguienteCarta();
