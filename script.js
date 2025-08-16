@@ -1,4 +1,5 @@
 const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"];
+let semana = 1;
 let estacionIndex = 0;
 let mazo = [];
 let mazoBarajado = [];
@@ -31,7 +32,7 @@ function iniciarJuego() {
 
 function iniciarEstacion() {
   const estacion = estaciones[estacionIndex];
-  document.getElementById("titulo-estacion").textContent = estacion;
+  document.getElementById("titulo-estacion").textContent = `${estacion} - Semana ${semana}`;
   document.getElementById("titulo-estacion").style.display = "block";
 
   mazo = cargarMazo(estacion);
@@ -56,6 +57,10 @@ function robarCarta() {
 
   cartaActual = mazoBarajado.pop();
   cartaRevelada = false;
+
+  // Actualizar subtítulo con estación y semana
+document.getElementById("titulo-estacion").textContent = `${estaciones[estacionIndex]} - Semana ${semana}`;
+semana++;
 
   const estacion = estaciones[estacionIndex];
   document.getElementById("carta").src = `${estacion}/14.png`; // mostrar reverso
@@ -108,6 +113,7 @@ function terminarJuego() {
 
 function reiniciarJuego() {
   estacionIndex = 0;
+  semana = 1;
   iniciarEstacion();
   document.getElementById("mensaje").textContent = "";
 }
