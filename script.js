@@ -15,8 +15,10 @@ let mazo = [
 ];
 
 let mazoBarajado = [];
+let cartaActual = null;
+let cartaRevelada = false;
 
-// Barajar
+// Barajar mazo
 function barajar() {
   mazoBarajado = mazo
     .map(valor => ({ valor, orden: Math.random() }))
@@ -24,14 +26,40 @@ function barajar() {
     .map(({ valor }) => valor);
 }
 
-function sacarCarta() {
-  if (mazoBarajado.length === 0) {
-    barajar(); // re-baraja si ya no hay cartas
-  }
-  let carta = mazoBarajado.pop();
-  document.getElementById("carta").src = carta;
+// Mostrar reverso
+function mostrarReverso() {
+  document.getElementById("carta").src = "img/back.png";
   document.getElementById("carta").style.display = "block";
+  cartaRevelada = false;
 }
 
-// Barajar al inicio
+// Siguiente carta
+function siguienteCarta() {
+  document.getElementById("mensaje").textContent = "";
+
+  if (mazoBarajado.length === 0) {
+    document.getElementById("mensaje").textContent = "🎉 No quedan más cartas.";
+    document.getElementById("carta").style.display = "none";
+    return;
+  }
+
+  cartaActual = mazoBarajado.pop(); // toma la siguiente
+  mostrarReverso();
+}
+
+// Voltear carta
+function voltearCarta() {
+  if (!cartaActual) {
+    document.getElementById("mensaje").textContent = "Primero saca una carta con 'Siguiente'.";
+    return;
+  }
+
+  if (!cartaRevelada) {
+    document.getElementById("carta").src = cartaActual;
+    cartaRevelada = true;
+  }
+}
+
+// Inicializar
 barajar();
+siguienteCarta();
