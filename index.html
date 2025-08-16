@@ -2,19 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mazo de Cartas</title>
+  <title>Mazo de Cartas - Invierno</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Mazo de Cartas</h1>
+  <h1>Mazo de Cartas - Invierno</h1>
   
   <div id="carta-container">
-    <img id="carta" src="Invierno/14.png" alt="Carta" style="display:none;">
+    <img id="carta" src="" alt="Carta" style="display:none;">
   </div>
   
   <div id="botones">
-    <button onclick="voltearCarta()">Voltear</button>
-    <button onclick="siguienteCarta()">Siguiente</button>
+    <button id="btn-robar" onclick="robarCarta()">Roba una carta</button>
+    <button id="btn-voltear" onclick="voltearCarta()" style="display:none;">Voltear</button>
+    <button id="btn-siguiente" onclick="siguienteJugador()" style="display:none;">Siguiente jugador</button>
   </div>
 
   <p id="mensaje"></p>
